@@ -1,28 +1,38 @@
-import sys
+def solution(new_id):
+    answer = ''
+    temp = new_id.lower()
 
-n, m = map(int, input().split())
-arr = [[] for i in range(n)]
-visited = [False] * n
+    for x in temp:
+        if x == "-" or x == "_" or x == "." or x.isalpha() or x.isdigit():
+            answer += x
 
-for _ in range(m):
-    a, b = map(int, sys.stdin.readline().rstrip().split())
-    arr[a].append(b)
-    arr[b].append(a)
+    for i, c in enumerate(answer):
+        print(i, c)
+        if i < len(answer):
+            while answer[i] == "." and answer[i+1] == ".":
+                answer = answer[:i]+answer[i+1:]
+    answer.find
+    if answer[0] == "." and len(answer) == 1:
+        answer = ""
+    elif answer[0] == ".":
+        answer = answer[1:]
+    elif answer[-1] == ".":
+        answer = answer[:-1]
+
+    if not answer:
+        answer += "a"
+    else:
+        answer = answer[:15]
+
+    if len(answer) > 15:
+        answer = answer[:16]
+        if answer[-1] == ".":
+            answer = answer[:-1]
+    if len(answer) < 3:
+        while len(answer) > 2:
+            answer += answer[-1]
+
+    return answer
 
 
-def dfs(idx, number):
-    if number == 4:
-        print(1)
-        exit()
-    for i in arr[idx]:
-        if not visited[i]:
-            visited[i] = True
-            dfs(i, number + 1)
-            visited[i] = False
-
-
-for i in range(n):
-    visited[i] = True
-    dfs(i, 0)
-    visited[i] = False
-print(0)
+print(solution(	"=.="))

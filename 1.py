@@ -1,4 +1,3 @@
-arr=[]
+arr = []
 
-ans=""
-ans.
+ans = ""

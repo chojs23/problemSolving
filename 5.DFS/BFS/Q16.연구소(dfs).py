@@ -6,7 +6,7 @@ input = sys.stdin.readline
 
 n, m = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(n)]  # 그래프 생성
-graph_copy = copy.deepcopy(graph)
+graph_copy = copy.deepcopy(graph)  # deepcopy 깊은복사 vs 얕은복사 정리
 
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]  # 상하좌우 이동
 

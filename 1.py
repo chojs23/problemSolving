@@ -1,35 +1,52 @@
-from itertools import permutations
+n = int(input())
+
+board = [list(map(str, input())) for _ in range(n)]
+res = 0
 
 
-def solution(expression):
-    answer = 0
-    n = len(expression)
-    operators = ["*", "+", "-"]
+def check():
+    cnt = 0
 
-    def make_exp():
-        temp = ""
-        exp = []
-        for i in expression:
-            if i.isnumeric():
-                temp += i
+    for i in range(n):
+        max_col = 1
+        max_row = 1
+        for j in range(n - 1):
+            if board[i][j] == board[i][j + 1]:
+                max_row += 1
             else:
-                exp.append(int(temp))
-                exp.append(i)
-                temp = ""
-        exp.append(int(temp))
-        return exp
+                cnt = max(max_row, cnt)
+                max_row = 1
+            if board[j][i] == board[j + 1][i]:
+                max_col += 1
+            else:
+                cnt = max(max_col, cnt)
+                max_col = 1
+        cnt = max(cnt, max_row, max_col)
+    return cnt
 
-    for i in permutations(operators, 3):
-        exp = make_exp()
-        for op in i:
-            while op in exp:
-                idx = exp.index(op)
-                if op == "+":
-                    cal = exp[idx - 1] + exp[idx + 1]
-                if op == "-":
-                    cal = exp[idx - 1] - exp[idx + 1]
-                if op == "*":
-                    cal = exp[idx - 1] * exp[idx + 1]
-                exp = exp[: idx - 1] + [cal] + exp[idx + 2 :]
-        answer = max(answer, abs(exp[0]))
-    return answer
+
+for i in range(n):
+    for j in range(n - 1):
+        if board[i][j] != board[i][j + 1]:
+            tmp = board[i][j]
+            board[i][j] = board[i][j + 1]
+            board[i][j + 1] = tmp
+
+            res = max(res, check())
+
+            tmp = board[i][j]
+            board[i][j] = board[i][j + 1]
+            board[i][j + 1] = tmp
+
+        if board[j][i] != board[j + 1][i]:
+            tmp = board[j][i]
+            board[j][i] = board[j + 1][i]
+            board[j + 1][i] = tmp
+
+            res = max(res, check())
+
+            tmp = board[j][i]
+            board[j][i] = board[j + 1][i]
+            board[j + 1][i] = tmp
+
+print(res)

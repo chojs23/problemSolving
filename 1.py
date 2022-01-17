@@ -1,13 +1,27 @@
-n = int(input())
-a = list(map(int, input().split()))
+import sys
 
-dp = [999999] * (n + 100)
+input = sys.stdin.readline
+n, s, m = map(int, input().split())
 
-dp[0] = 0
+v = list(map(int, input().split()))
+
+dp = []
+for _ in range(n + 1):
+    dp_arr = [False] * (m + 1)
+    dp.append(dp_arr)
+dp[0][s] = True
 
 for i in range(n):
+    for j in range(m + 1):
+        check = dp[i][j]
+        if check:
+            if j + v[i] <= m:
+                dp[i + 1][j + v[i]] = True
+            if j - v[i] >= 0:
+                dp[i + 1][j - v[i]] = True
+result = -1
+for i in range(m + 1):
+    if dp[n][i]:
+        result = i
 
-    for j in range(a[i]):
-        dp[i + j + 1] = min(dp[i] + 1, dp[i + j + 1])
-
-print(dp[n - 1] if dp[n - 1] != 999999 else -1)
+print(result)

@@ -1,27 +1,13 @@
-import sys
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0] * n
+        dp[0] = nums[0]
 
-input = sys.stdin.readline
-n, s, m = map(int, input().split())
+        max = dp[0]
 
-v = list(map(int, input().split()))
+        for i in range(1, n):
+            dp[i] = max(dp[i - 1] + nums[i], nums[i])
+            max = max(dp)
 
-dp = []
-for _ in range(n + 1):
-    dp_arr = [False] * (m + 1)
-    dp.append(dp_arr)
-dp[0][s] = True
-
-for i in range(n):
-    for j in range(m + 1):
-        check = dp[i][j]
-        if check:
-            if j + v[i] <= m:
-                dp[i + 1][j + v[i]] = True
-            if j - v[i] >= 0:
-                dp[i + 1][j - v[i]] = True
-result = -1
-for i in range(m + 1):
-    if dp[n][i]:
-        result = i
-
-print(result)
+        return max

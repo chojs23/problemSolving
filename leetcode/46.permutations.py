@@ -1,3 +1,9 @@
+# @before-stub-for-debug-begin
+from python3problem46 import *
+from typing import *
+
+# @before-stub-for-debug-end
+
 #
 # @lc app=leetcode id=46 lang=python3
 #
@@ -8,23 +14,29 @@
 
 
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
+    def permute(self, l: List[int]) -> List[List[int]]:
+        def dfs(path, used, res):
+            if len(path) == len(l):
+                res.append(
+                    path[:]
+                )  # note [:] make a deep copy since otherwise we'd be append the same list over and over
+                return
 
-        results = []
-        prev_elements = []
+            for i, letter in enumerate(l):
+                # skip used letters
+                if used[i]:
+                    continue
+                # add letter to permutation, mark letter as used
+                path.append(letter)
+                used[i] = True
+                dfs(path, used, res)
+                # remove letter from permutation, mark letter as unused
+                path.pop()
+                used[i] = False
 
-        def dfs(elements):
-            if len(elements) == 0:
-                results.append(prev_elements[:])
-            for e in elements:
-                next_elements = elements[:]
-                next_elements.remove(e)
-                prev_elements.append(e)
-                dfs(next_elements)
-                prev_elements.pop()
-
-        dfs(nums)
-        return results
+        res = []
+        dfs([], [False] * len(l), res)
+        return res
 
 
 # @lc code=end

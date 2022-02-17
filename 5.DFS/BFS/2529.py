@@ -24,7 +24,6 @@ def backtracking(idx, string):
             visited[i] = False
 
 
-0
 n = int(input())
 stack = list(input().split())
 max_value = ""

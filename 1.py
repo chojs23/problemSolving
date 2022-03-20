@@ -1,13 +1,21 @@
-class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [0] * n
-        dp[0] = nums[0]
+def solution(s):
+    answer = ""
 
-        max = dp[0]
+    s = s.lower()
 
-        for i in range(1, n):
-            dp[i] = max(dp[i - 1] + nums[i], nums[i])
-            max = max(dp)
+    words = s.split(" ")
 
-        return max
+    for word in words:
+        if word == " ":
+            continue
+        if word[0].isalpha():
+            answer += word[0].upper() + word[1:]
+        else:
+            answer += word
+        answer += " "
+
+    return answer[:-1]
+
+
+s = []
+solution("Hi   my  name")

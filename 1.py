@@ -1,21 +1,27 @@
-def solution(s):
-    answer = ""
+def solution(m, n, board):
+    answer = 0
+    board = [[]]
 
-    s = s.lower()
+    def isSquare(r, c):
+        if r >= m - 1 or c >= n - 1:
+            return False
+        char = board[r][c]
 
-    words = s.split(" ")
+        if board[r + 1][c] == board[r][c + 1] == board[r + 1][c + 1] == char:
+            return True
+        return False
 
-    for word in words:
-        if word == " ":
-            continue
-        if word[0].isalpha():
-            answer += word[0].upper() + word[1:]
-        else:
-            answer += word
-        answer += " "
+    temp = []
+    for i in range(m):
+        for j in range(n):
+            if isSquare(i, j):
+                temp.append((i, j))
+    for t in temp:
+        r, c = t[0], t[1]
+        board[r][c] = "."
+        board[r + 1][c] = "."
+        board[r][c + 1] = "."
+        board[r + 1][c + 1] = "."
 
-    return answer[:-1]
-
-
-s = []
-solution("Hi   my  name")
+    print(board)
+    return answer

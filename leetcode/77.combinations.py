@@ -13,7 +13,6 @@ class Solution:
 
         def dfs(start):
             if len(s) == k:
-
                 result.append(s[:])
 
             for i in range(start, n + 1):

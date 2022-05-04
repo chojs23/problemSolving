@@ -13,7 +13,7 @@ inf = 100000000
 N = int(input())
 M = int(input())
 arr = [[] for _ in range(N + 1)]
-dp = [inf for i in range(N + 1)]
+distance = [inf for i in range(N + 1)]
 
 
 for i in range(M):
@@ -24,19 +24,19 @@ start, end = map(int, input().split())
 
 
 def dijkstra(start):
-    dp[start] = 0
+    distance[start] = 0
     heap = []
     heapq.heappush(heap, [0, start])
     while heap:
         w, n = heapq.heappop(heap)
-        if dp[n] < w:
+        if distance[n] < w:
             continue
         for n_n, weight in arr[n]:
             n_w = w + weight
-            if dp[n_n] > n_w:
-                dp[n_n] = n_w
+            if distance[n_n] > n_w:
+                distance[n_n] = n_w
                 heapq.heappush(heap, [n_w, n_n])
 
 
 dijkstra(start)
-print(dp[end])
+print(distance[end])

@@ -46,7 +46,6 @@ def bfs(virus):
     while q:
         length = len(q)
         check = 0
-        # ret += 1
         for _ in range(length):
 
             r, c = q.popleft()
@@ -73,29 +72,16 @@ def bfs(virus):
                     q.append([nr, nc])
         if check:
             ret += 1
-        # check = 1
-        # for i in range(n):
-        #     for j in range(n):
-        #         if visited[i][j] == 0:
-        #             if board[i][j] == 0:
-        #                 check = 0
-        # if check:
-        #     # print("asd")
-        #     return ret
 
-    # print(visited)
     for i in range(n):
         for j in range(n):
             if visited[i][j] == 0:
                 if board[i][j] == 0 or board[i][j] == 2:
-                    # print("-100")
                     return -100
-    # print(ret)
     return ret
 
 
 for comb in v_comb:
-    # print(comb)
     ret = bfs(comb)
     if ret == -100:
         pass

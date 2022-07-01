@@ -20,7 +20,7 @@ a = [list(map(int, input().split())) for _ in range(3)]
 
 ans = 0
 flag = 1
-while ans < 100:
+while ans <= 100:
     try:
         if a[r - 1][c - 1] == k:
             print(ans)

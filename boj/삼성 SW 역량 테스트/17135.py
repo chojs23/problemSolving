@@ -50,9 +50,9 @@ def attack(list_):
 
     for a in attack_list:
         _, i, j = a
-
-        temp[i][j] = 0
-        cnt += 1
+        if temp[i][j] == 1:
+            temp[i][j] = 0
+            cnt += 1
     return cnt
 
 

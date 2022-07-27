@@ -20,7 +20,8 @@ N = int(input())
 q = deque(range(1, N+1))
 
 while True:
-
+    if len(q) == 1:
+        break
     q.popleft()
     if len(q) == 1:
         break

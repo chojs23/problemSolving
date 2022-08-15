@@ -12,6 +12,7 @@ INF = sys.maxsize
 
 # ===========================================================
 
+# TODO : 비트마스킹
 
 n = int(input())
 w = []
@@ -42,7 +43,8 @@ def find(x, visited):
         if visited & (1 << i):
             continue
 
-        dp[x][visited] = min(dp[x][visited], find(i, visited | (1 << i)) + w[x][i])
+        dp[x][visited] = min(dp[x][visited], find(
+            i, visited | (1 << i)) + w[x][i])
 
     return dp[x][visited]
 

@@ -1,1 +1,1 @@
-ps 알고리즘
+ps, algorithm

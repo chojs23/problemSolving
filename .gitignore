@@ -9,3 +9,8 @@ leetcode/__pycache__/
 .DS_Store
 
 .vscode
+
+
+# Added by cargo
+
+rust/target

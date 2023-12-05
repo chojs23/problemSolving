@@ -2,6 +2,7 @@ mod _121_best_time_to_buy_and_sell_stock;
 mod _125_valid_palindrome;
 mod _153_find_minimum_in_rotated_sorted_array;
 mod _1_two_sum;
+mod _206_reverse_linked_list;
 mod _20_valid_parentheses;
 mod _217_dontains_duplicate;
 mod _242_valid_anagram;

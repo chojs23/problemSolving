@@ -14,3 +14,4 @@
 extern crate util;
 
 mod easy;
+mod medium;

@@ -1,3 +1,4 @@
+mod _1046_last_stone_weight;
 mod _121_best_time_to_buy_and_sell_stock;
 mod _125_valid_palindrome;
 mod _136_single_number;

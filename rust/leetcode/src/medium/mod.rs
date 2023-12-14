@@ -6,5 +6,6 @@ mod _39_combination_sum;
 mod _417_pacific_atlantic_water_flow;
 mod _53_maximum_subarray;
 mod _685_find_k_closest_elements;
+mod _74_search_a_2d_matrix;
 mod _79_word_search;
 mod _973_k_closest_points_to_origin;
